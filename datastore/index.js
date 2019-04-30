@@ -7,10 +7,16 @@ var items = {};
 
 // Public API - Fix these CRUD functions ///////////////////////////////////////
 
+// exports.dataDir = path.join(__dirname, 'data', `${id}.txt`);
+
 exports.create = (text, callback) => {
-  var id = counter.getNextUniqueId();
-  items[id] = text;
-  callback(null, { id, text });
+  // counter.getNextUniqueId((err,text)=>{
+  //   if (err) {
+  //     callback(null, 0)
+  //   } else {
+  //     fs.writeFile(dataDir, text, ) 
+  //   }
+  // }); 
 };
 
 exports.readAll = (callback) => {

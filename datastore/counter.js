@@ -4,6 +4,7 @@ const sprintf = require('sprintf-js').sprintf;
 
 var counter = 0;
 
+
 // Private helper functions ////////////////////////////////////////////////////
 
 // Zero padded numbers can only be represented as strings.
@@ -38,8 +39,17 @@ const writeCounter = (count, callback) => {
 
 // Public API - Fix this function //////////////////////////////////////////////
 
-exports.getNextUniqueId = () => {
-  counter = counter + 1;
+exports.getNextUniqueId = (callback) => {
+  // Look into the counter.txt file
+  readCounter(function(err, currentCount) {
+    // Get the current count
+    // Increment the current count
+    currentCount++;
+    // Write the new current count into the counter.txt file
+    writeCounter(currentCount, function(err, numberString) {
+      callback(err, numberString);
+    });
+  });
   return zeroPaddedNumber(counter);
 };
 
